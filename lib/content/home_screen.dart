@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:ocr_app/theme/app_theme.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -11,12 +12,9 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-        child: Text(
-          'Home Screen',
-          style: TextStyle(color: MyAppTheme.whiteColor),
-        ),
+        child: Column(children: [Lottie.asset('assets/json/Image.json')]),
       ),
     );
   }
