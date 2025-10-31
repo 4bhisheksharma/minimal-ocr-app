@@ -24,36 +24,25 @@ class _HomeScreenState extends State<HomeScreen> {
               // App logo animation as JSON
               Lottie.asset('assets/json/OCR.json', width: 200, height: 200),
               Text(
-                'O C R',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w500,
-                  color: MyAppTheme.primaryPurple,
-                ),
+                'M I N I M A L - O C R',
+                style: TextStyle(fontSize: 24, color: MyAppTheme.primaryPurple),
               ),
               const SizedBox(height: 20),
 
               // Tap to add image from gallery
               GestureDetector(
                 onTap: () async {
+                  debugPrint("vai yeta yeta!!");
                   final ImagePicker picker = ImagePicker();
-                  final XFile? picked = await picker.pickImage(
+                  final XFile? image = await picker.pickImage(
                     source: ImageSource.gallery,
                   );
-                  if (picked == null) return;
-
-                  showDialog(
-                    context: context,
-                    builder: (_) => AlertDialog(
-                      content: Image.file(File(picked.path)),
-                      actions: [
-                        TextButton(
-                          onPressed: () => Navigator.of(context).pop(),
-                          child: const Text('Close'),
-                        ),
-                      ],
-                    ),
-                  );
+                  if (image != null) {
+                    File imgFile = File(image.path);
+                    debugPrint("Image selected: ${imgFile.path}");
+                  } else {
+                    debugPrint("No image selected.");
+                  }
                 },
                 child: Column(
                   children: [
@@ -65,11 +54,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     const SizedBox(height: 8),
                     const Text(
-                      'Tap to add image from gallery',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: MyAppTheme.primaryPurple,
-                      ),
+                      'Tap to add image',
+                      style: TextStyle(color: MyAppTheme.primaryPurple),
                     ),
                   ],
                 ),
